@@ -6,7 +6,7 @@ using namespace std;
 int maze[MAXSIZE][MAXSIZE];
 int n, m; //n:높이, m:너비
 
-bool checkAvilableRange(int x, int y) //(x,y)가 (1,1) ~ (n,m) 범위를 벗어나는지 확인
+bool checkAvailableRange(int x, int y) //(x,y)가 (1,1) ~ (n,m) 범위를 벗어나는지 확인
 {
 	if (((x >= 1) && (x <= n)) && ((y >= 1) && (y <= m)))
 		return true;
@@ -45,7 +45,7 @@ int main()
 			int checkX = x + dx[i];
 			int checkY = y + dy[i];
 			//확인할 좌표가 maze배열을 벗어나는지 확인
-			if (checkAvilableRange(checkX, checkY))
+			if (checkAvailableRange(checkX, checkY))
 			{
 				if (maze[checkX][checkY] == 1 && distance[checkX][checkY] == 0) //이동가능하며 아직 확인하지 않은 칸에 대해
 				{
