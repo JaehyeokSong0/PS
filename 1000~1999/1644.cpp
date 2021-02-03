@@ -5,7 +5,7 @@ using namespace std;
 #define MAXSIZE 4000000+1
 #define MAXPRIMECOUNT 283146 //4,000,000이하 소수의 개수
 bool isPrime[MAXSIZE]; //각 숫자들의 소수 여부를 저장
-int primeNumbers[283146] = { 0, }; //소수들을 순서대로 저장
+int primeNumbers[MAXPRIMECOUNT] = { 0, }; //소수들을 순서대로 저장
 int primeCnt = 0;
 
 //에라토스테네스의 체
