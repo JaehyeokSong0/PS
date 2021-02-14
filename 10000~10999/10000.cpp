@@ -34,9 +34,6 @@ int main()
 	int maxLeft = circle[0].first;
 	int maxRight = circle[0].second;
 	circleStack.push(circle[0]);
-	//이전에 참조한 원의 양 끝 좌표
-	int prevLeft = maxLeft;
-	int prevRight = maxRight;
 
 	//같은 깊이에 속하며 서로 접하는 원들의 지름의 합 (stack에 깊이별로 저장)
 	stack<int> depthDiameter; 
@@ -79,8 +76,6 @@ int main()
 			circleStack.push(circle[i]);
 			depthDiameter.push(currDepthDiameter);
 			ret++;
-			prevLeft = circle[i].first;
-			prevRight = circle[i].second;
 		}
 	}
 
