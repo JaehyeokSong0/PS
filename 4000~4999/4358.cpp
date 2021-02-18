@@ -4,7 +4,8 @@
 #include <vector>
 using namespace std;
 
-vector<string> tree;
+#define MAXSIZE 1000000
+string tree[MAXSIZE];
 
 int main()
 {
@@ -21,10 +22,9 @@ int main()
 		getline(cin, str);
 		if (str == "")
 			break;
-		tree.push_back(str);
-		cnt++;
+		tree[cnt++] = str;
 	}
-	sort(tree.begin(), tree.end());
+	sort(tree, tree + cnt);
 
 	string treeName = tree[0];
 	int treeCnt = 1;
