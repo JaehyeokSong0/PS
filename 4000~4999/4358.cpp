@@ -1,11 +1,7 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <vector>
+#include <map>
 using namespace std;
-
-#define MAXSIZE 1000000
-string tree[MAXSIZE];
 
 int main()
 {
@@ -14,32 +10,21 @@ int main()
 	cout.tie(NULL);
 	cout << fixed;
 	cout.precision(4); //소수점 4번째자리까지 출력
-
+	
+	map<string, int> tree;
+	int cnt = 0; //map에 저장될 나무의 총 그루 수
 	string str;
-	int cnt = 0;
 	while (true)
 	{
 		getline(cin, str);
 		if (str == "")
 			break;
-		tree[cnt++] = str;
+		tree[str]++;
+		cnt++;
 	}
-	sort(tree, tree + cnt);
 
-	string treeName = tree[0];
-	int treeCnt = 1;
-	for (int i = 1;i < cnt;i++)
-	{
-		if (treeName != tree[i])
-		{
-			cout << treeName << " " << 100 * (double)treeCnt / cnt << "\n";
-			treeName = tree[i];
-			treeCnt = 1;
-		}
-		else
-			treeCnt++;
-	}
-	cout << treeName << " " << 100 * (double)treeCnt / cnt;
+	for (auto t : tree)
+		cout << t.first << " " << 100 * (double)(t.second) / cnt << "\n";
 
 	return 0;
 }
