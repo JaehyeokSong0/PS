@@ -31,7 +31,7 @@ int main()
 		}
 	}
 
-	cout << lcs[str1_len - 1][str2_len - 1]; //문자열의 맨 앞의 "0" 제외 (-1)
+	cout << lcs[str1_len - 1][str2_len - 1];
 
 	return 0;
 }
