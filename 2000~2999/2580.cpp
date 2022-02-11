@@ -2,7 +2,7 @@
 using namespace std;
 
 int matrix[9][9];
-int found = false;
+bool found = false;
 
 void getMatrix()
 {
@@ -51,7 +51,6 @@ void solve(int depth)
 	int j = depth % 9;
 	if (matrix[i][j] == 0)
 	{
-		bool flag = false;
 		for (int k = 1; k <= 9; k++)
 		{
 			if (promising(i, j, k))
@@ -64,7 +63,6 @@ void solve(int depth)
 	}
 	else
 		solve(depth + 1);
-
 }
 
 int main()
