@@ -215,7 +215,6 @@ void getMatrix()
                 }
                 else
                     return;
-                matrix[i][j] = ch;
             }
         }
         solve();
