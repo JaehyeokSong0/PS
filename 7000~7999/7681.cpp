@@ -118,7 +118,6 @@ void makeLinkedList()
         {
             if (dlxMatrix[i][j]) // 0이 아닌 칸에 대해서 노드 생성
             {
-                //cout << i << " " << j << "\n";
                 node* nNode = new node;
                 nNode->row = i;
                 nNode->col = &cols[j];
@@ -177,9 +176,9 @@ void getMatrix()
         dlxMatrix.clear();
         rows.clear();
         solution.clear();
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < MAXSIZE; i++)
         {
-            for (int j = 0; j < 9; j++)
+            for (int j = 0; j < MAXSIZE; j++)
             {
                 ch = cin.get();
                 if ((49 <= ch) && (ch <= 57))
@@ -197,7 +196,7 @@ void getMatrix()
                 else if (ch == '.')
                 {
                     ch = 0;
-                    for (int k = 0; k < 9; k++)
+                    for (int k = 0; k < MAXSIZE; k++)
                     {
                         vector<bool> row(MAXDLXCOL, false);
                         row[i * 9 + j] = true; // 각 칸
