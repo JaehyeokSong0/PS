@@ -1,59 +1,8 @@
-// Solved with TRIE
+// Solved with unordered set
 
 #include <iostream>
+#include <unordered_set>
 using namespace std;
-
-struct trie
-{
-	bool finish;
-	trie* next[26];
-
-	trie()
-	{
-		finish = false;
-
-		for (int i = 0; i < 26; i++)
-			next[i] = nullptr;
-	}
-};
-
-void insert(trie* curr, string& str, int index)
-{
-	int ch = str[index] - 'a';
-
-	if (curr->next[ch] == nullptr)
-	{
-		curr->next[ch] = new trie;
-	}
-
-	if (index == str.length())
-	{
-		curr->finish = true;
-		return;
-	}
-	else
-	{
-		insert(curr->next[ch], str, index + 1);
-	}
-}
-
-bool find(trie* curr, string& str, int index)
-{
-	int ch = str[index] - 'a';
-	
-	if (index == str.length())
-	{
-		return (curr->finish == true);
-	}
-	else if (curr->next[ch] == nullptr)
-	{
-		return false;
-	}
-	else
-	{
-		return find(curr->next[ch], str, index + 1);
-	}
-}
 
 int main()
 {
@@ -62,17 +11,17 @@ int main()
 
 	int answer = 0;
 
-	trie* const root = new trie;
-
 	int N, M;
 	cin >> N >> M;
+
+	unordered_set<string> dict;
 
 	for (int i = 0; i < N; i++)
 	{
 		string input;
 		cin >> input;
 
-		insert(root, input, 0);
+		dict.insert(input);
 	}
 
 	for (int i = 0; i < M; i++)
@@ -80,8 +29,10 @@ int main()
 		string input;
 		cin >> input;
 
-		if (find(root, input, 0) == true)
+		if (dict.find(input) != dict.end())
+		{
 			answer++;
+		}
 	}
 
 	cout << answer << "\n";
