@@ -1,13 +1,13 @@
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <cmath>
 using namespace std;
 
 typedef long long ll;
 
-ll getElem(map<ll, ll>& arr, ll index, int P, int Q)
+ll getElem(unordered_map<ll, ll>& arr, ll index, int P, int Q)
 {
-	if (arr[index] != 0)
+	if (arr.find(index) != arr.end())
 		return arr[index];
 
 	arr[index] = getElem(arr, floor(index / P), P, Q) + getElem(arr, floor(index / Q), P, Q);
@@ -24,7 +24,7 @@ int main()
 	int P, Q;
 	cin >> N >> P >> Q;
 
-	map<ll, ll> A;
+	unordered_map<ll, ll> A;
 	A[0] = 1;
 
 	cout << getElem(A, N, P, Q) << "\n";
